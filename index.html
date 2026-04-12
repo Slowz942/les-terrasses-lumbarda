@@ -42,7 +42,7 @@ h1,h2,h3,h4{font-family:var(--font-display);font-weight:400;line-height:1.3;font
    ======================================== */
 .section-label{
   text-align:center;font-size:.7rem;letter-spacing:4px;text-transform:uppercase;
-  color:var(--gold);font-weight:500;margin-bottom:16px;font-family:var(--font-body);font-style:normal
+  color:var(--gold);font-weight:600;margin-bottom:16px;font-family:var(--font-body);font-style:normal
 }
 .section-title{
   font-size:clamp(2rem,4.5vw,3.2rem);text-align:center;margin-bottom:20px;
@@ -54,7 +54,7 @@ h1,h2,h3,h4{font-family:var(--font-display);font-weight:400;line-height:1.3;font
   content:'';display:block;width:50px;height:1px;background:var(--gold);margin:20px auto 0;opacity:.6
 }
 .section-subtitle{
-  text-align:center;font-size:1rem;max-width:560px;margin:24px auto 64px;
+  text-align:center;font-size:1rem;max-width:560px;margin:24px auto 56px;
   font-weight:300;line-height:1.8;letter-spacing:.3px
 }
 .section-subtitle.light{color:rgba(255,255,255,.6)}
@@ -95,11 +95,12 @@ h1,h2,h3,h4{font-family:var(--font-display);font-weight:400;line-height:1.3;font
 /* ========================================
    REVEAL ANIMATIONS
    ======================================== */
-.reveal{opacity:0;transform:translateY(35px);transition:opacity .8s cubic-bezier(.25,.46,.45,.94),transform .8s cubic-bezier(.25,.46,.45,.94)}
+.reveal{opacity:0;transform:translateY(30px);transition:opacity .7s cubic-bezier(.25,.46,.45,.94),transform .7s cubic-bezier(.25,.46,.45,.94)}
 .reveal.visible{opacity:1;transform:translateY(0)}
 .reveal-delay-1{transition-delay:.1s}
 .reveal-delay-2{transition-delay:.2s}
 .reveal-delay-3{transition-delay:.3s}
+.reveal-delay-4{transition-delay:.35s}
 
 /* ========================================
    NAVBAR
@@ -117,6 +118,8 @@ h1,h2,h3,h4{font-family:var(--font-display);font-weight:400;line-height:1.3;font
 .nav-logo span{color:var(--gold);font-weight:500}
 .navbar.scrolled .nav-logo{color:var(--dark)}
 .navbar.scrolled .nav-logo span{color:var(--gold)}
+.nav-tagline{display:block;font-family:var(--font-body);font-size:.55rem;letter-spacing:3.5px;text-transform:uppercase;color:rgba(255,255,255,.4);margin-top:2px;font-weight:400;font-style:normal}
+.navbar.scrolled .nav-tagline{color:var(--gray-light)}
 .nav-links{display:flex;align-items:center;gap:36px}
 .nav-links a{
   color:rgba(255,255,255,.85);font-size:.8rem;font-weight:400;position:relative;
@@ -128,6 +131,11 @@ h1,h2,h3,h4{font-family:var(--font-display);font-weight:400;line-height:1.3;font
 .navbar.scrolled .nav-links a{color:var(--gray)}
 .navbar.scrolled .nav-links a:hover{color:var(--dark)}
 .nav-right{display:flex;align-items:center;gap:18px}
+.nav-heart{color:rgba(255,255,255,.5);transition:var(--transition);display:flex;align-items:center}
+.nav-heart svg{width:18px;height:18px;stroke:currentColor;fill:none;stroke-width:1.5}
+.nav-heart:hover{color:var(--gold)}
+.navbar.scrolled .nav-heart{color:var(--gray-light)}
+.navbar.scrolled .nav-heart:hover{color:var(--gold)}
 .lang-switcher{display:flex;gap:2px;background:rgba(255,255,255,.08);border-radius:6px;padding:3px}
 .navbar.scrolled .lang-switcher{background:rgba(0,0,0,.04)}
 .lang-btn{
@@ -174,7 +182,7 @@ h1,h2,h3,h4{font-family:var(--font-display);font-weight:400;line-height:1.3;font
 .hero-bg video{width:100%;height:100%;object-fit:cover;opacity:.85}
 .hero-bg::after{
   content:'';position:absolute;inset:0;
-  background:linear-gradient(180deg,rgba(0,0,0,.3) 0%,rgba(0,0,0,.5) 40%,rgba(0,0,0,.65) 100%)
+  background:linear-gradient(180deg,rgba(0,0,0,.6) 0%,rgba(0,0,0,.55) 40%,rgba(0,0,0,.75) 100%)
 }
 .hero-content{
   position:relative;z-index:2;text-align:center;color:#fff;padding:0 24px;max-width:800px
@@ -209,19 +217,46 @@ h1,h2,h3,h4{font-family:var(--font-display);font-weight:400;line-height:1.3;font
 }
 
 /* ========================================
-   INTRO (light warm section)
+   STATS BAR (dark, compact)
    ======================================== */
-.intro{padding:120px 0;background:var(--bg-light)}
-.intro-text{
-  max-width:700px;margin:0 auto;text-align:center;font-size:clamp(.95rem,1.3vw,1.05rem);
-  color:var(--gray);line-height:2;font-weight:300;letter-spacing:.3px
+.stats-bar{background:var(--dark-bg);padding:40px 0;border-bottom:1px solid rgba(201,169,110,.1)}
+.stats-inner{display:flex;justify-content:center;align-items:center;gap:48px;flex-wrap:wrap}
+.stat-item{text-align:center}
+.stat-number{font-family:var(--font-display);font-size:clamp(1.8rem,3vw,2.4rem);color:#fff;font-style:italic;font-weight:400;letter-spacing:1px;line-height:1}
+.stat-text{font-size:.72rem;color:rgba(255,255,255,.4);letter-spacing:3px;text-transform:uppercase;margin-top:8px;font-weight:400}
+.stat-divider{width:1px;height:40px;background:rgba(201,169,110,.2)}
+
+/* ========================================
+   QUOTE / INTRO (light warm section)
+   ======================================== */
+.intro{padding:90px 0;background:var(--bg-light)}
+.intro-quote{
+  max-width:750px;margin:0 auto;text-align:center;position:relative;
+  padding:40px 48px;border:1px solid rgba(201,169,110,.2);border-radius:2px
 }
-.intro-text p{margin-bottom:20px}
+.intro-quote::before{
+  content:'\201C';position:absolute;top:-20px;left:50%;transform:translateX(-50%);
+  font-family:var(--font-display);font-size:4rem;color:var(--gold);line-height:1;
+  background:var(--bg-light);padding:0 16px
+}
+.intro-quote blockquote{
+  font-family:var(--font-display);font-size:clamp(1.1rem,2vw,1.4rem);
+  color:var(--dark);font-style:italic;font-weight:400;line-height:1.8;letter-spacing:.5px;
+  margin-bottom:20px
+}
+.intro-quote cite{
+  font-family:var(--font-body);font-size:.75rem;color:var(--gold);
+  letter-spacing:3px;text-transform:uppercase;font-style:normal;font-weight:500
+}
+.intro-text{
+  max-width:700px;margin:36px auto 0;text-align:center;font-size:clamp(.92rem,1.2vw,1rem);
+  color:var(--gray);line-height:1.9;font-weight:300;letter-spacing:.3px
+}
 
 /* ========================================
    APARTMENTS GRID (white)
    ======================================== */
-.apartments{padding:120px 0;background:var(--bg-white)}
+.apartments{padding:90px 0;background:var(--bg-white)}
 .apartments-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:32px}
 .apt-card{
   background:#fff;border-radius:var(--radius-xl);overflow:hidden;
@@ -286,7 +321,7 @@ h1,h2,h3,h4{font-family:var(--font-display);font-weight:400;line-height:1.3;font
 /* ========================================
    APARTMENT DETAILS (alternating dark/light)
    ======================================== */
-.apt-detail{padding:120px 0}
+.apt-detail{padding:90px 0}
 .apt-detail.dark-section{background:var(--dark-bg);color:#fff}
 .apt-detail.light-section{background:var(--bg-light)}
 .apt-detail-inner{display:grid;grid-template-columns:1fr 1fr;gap:60px;align-items:center}
@@ -317,7 +352,7 @@ h1,h2,h3,h4{font-family:var(--font-display);font-weight:400;line-height:1.3;font
 
 .apt-detail-info .detail-label{
   font-size:.7rem;letter-spacing:4px;text-transform:uppercase;color:var(--gold);
-  font-weight:500;margin-bottom:12px;font-family:var(--font-body);font-style:normal
+  font-weight:600;margin-bottom:12px;font-family:var(--font-body);font-style:normal
 }
 .apt-detail-info h2{
   font-size:clamp(1.6rem,3vw,2.4rem);margin-bottom:20px;font-weight:400;
@@ -346,8 +381,8 @@ h1,h2,h3,h4{font-family:var(--font-display);font-weight:400;line-height:1.3;font
 /* ========================================
    ABOUT / WHY (dark section)
    ======================================== */
-.about{padding:120px 0;background:var(--dark-bg)}
-.features-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:48px;margin-top:56px}
+.about{padding:90px 0;background:var(--dark-bg)}
+.features-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:48px;margin-top:48px}
 .feature-card{text-align:center;padding:40px 24px}
 .feature-icon{
   width:60px;height:60px;margin:0 auto 24px;border:1px solid rgba(201,169,110,.3);
@@ -365,13 +400,13 @@ h1,h2,h3,h4{font-family:var(--font-display);font-weight:400;line-height:1.3;font
 /* ========================================
    GALLERY (white)
    ======================================== */
-.gallery{padding:120px 0;background:var(--bg-white)}
+.gallery{padding:90px 0;background:var(--bg-white)}
 .gallery-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:8px}
 .gallery-item{
   position:relative;border-radius:var(--radius);overflow:hidden;cursor:pointer;aspect-ratio:4/3
 }
-.gallery-item img{width:100%;height:100%;object-fit:cover;transition:transform .7s cubic-bezier(.25,.46,.45,.94)}
-.gallery-item:hover img{transform:scale(1.06)}
+.gallery-item img{width:100%;height:100%;object-fit:cover;transition:transform 6s cubic-bezier(.25,.46,.45,.94)}
+.gallery-item:hover img{transform:scale(1.08)}
 .gallery-item::after{content:'';position:absolute;inset:0;background:rgba(0,0,0,0);transition:background .4s ease}
 .gallery-item:hover::after{background:rgba(0,0,0,.12)}
 .gallery-item:nth-child(1){grid-column:span 2;grid-row:span 2}
@@ -403,7 +438,7 @@ h1,h2,h3,h4{font-family:var(--font-display);font-weight:400;line-height:1.3;font
 /* ========================================
    FAQ (light warm)
    ======================================== */
-.faq{padding:120px 0;background:var(--bg-light)}
+.faq{padding:90px 0;background:var(--bg-light)}
 .faq-list{max-width:760px;margin:0 auto}
 .faq-item{border-bottom:1px solid rgba(0,0,0,.06)}
 .faq-question{
@@ -425,7 +460,7 @@ h1,h2,h3,h4{font-family:var(--font-display);font-weight:400;line-height:1.3;font
 /* ========================================
    CONTACT (dark)
    ======================================== */
-.contact{padding:120px 0;background:var(--dark-bg)}
+.contact{padding:90px 0;background:var(--dark-bg)}
 .contact .section-title{color:#fff}
 .contact .section-subtitle{color:rgba(255,255,255,.45)}
 .contact-grid{display:grid;grid-template-columns:1fr 1fr;gap:56px}
@@ -459,8 +494,9 @@ h1,h2,h3,h4{font-family:var(--font-display);font-weight:400;line-height:1.3;font
    ======================================== */
 .footer{background:var(--dark-deep);color:rgba(255,255,255,.5);padding:80px 0 36px}
 .footer-grid{display:grid;grid-template-columns:1.5fr 1fr 1fr;gap:56px;margin-bottom:48px}
-.footer-brand .footer-logo{font-family:var(--font-display);font-size:1.3rem;font-weight:400;letter-spacing:3px;text-transform:uppercase;color:#fff;margin-bottom:18px;display:block}
+.footer-brand .footer-logo{font-family:var(--font-display);font-size:1.3rem;font-weight:400;letter-spacing:3px;text-transform:uppercase;color:#fff;margin-bottom:6px;display:block}
 .footer-brand .footer-logo span{color:var(--gold)}
+.footer-brand .footer-tagline{font-size:.55rem;letter-spacing:3.5px;text-transform:uppercase;color:rgba(255,255,255,.25);margin-bottom:18px;display:block;font-weight:400}
 .footer-brand p{font-size:.85rem;line-height:1.7;max-width:280px;font-weight:300}
 .footer h4{
   color:rgba(255,255,255,.8);font-family:var(--font-display);font-size:1rem;margin-bottom:20px;
@@ -496,9 +532,10 @@ h1,h2,h3,h4{font-family:var(--font-display);font-weight:400;line-height:1.3;font
   .card-carousel .arrow{opacity:1}
   .container-wide{padding:0 24px}
   .features-grid{gap:32px}
+  .stats-inner{gap:28px}
 }
 @media(max-width:768px){
-  .nav-links,.nav-cta{display:none}
+  .nav-links,.nav-cta,.nav-heart{display:none}
   .hamburger{display:flex}
   .features-grid{grid-template-columns:1fr;gap:20px}
   .apartments-grid{grid-template-columns:1fr;max-width:500px;margin-left:auto;margin-right:auto}
@@ -510,15 +547,22 @@ h1,h2,h3,h4{font-family:var(--font-display);font-weight:400;line-height:1.3;font
   .amenities-grid{grid-template-columns:1fr}
   .form-row{grid-template-columns:1fr}
   .nav-right .lang-switcher{display:none}
-  .intro,.about,.apartments,.apt-detail,.gallery,.faq,.contact{padding:80px 0}
-  .section-subtitle{margin-bottom:44px}
+  .stats-bar{padding:28px 0}
+  .stats-inner{gap:20px}
+  .stat-divider{height:24px}
+  .stat-number{font-size:1.6rem}
+  .intro,.about,.apartments,.apt-detail,.gallery,.faq,.contact{padding:60px 0}
+  .section-subtitle{margin-bottom:36px}
   .card-carousel .arrow{opacity:1}
   .feature-card{padding:24px 16px}
+  .intro-quote{padding:32px 24px}
 }
 @media(max-width:480px){
   .hero-btns{flex-direction:column;align-items:center}
   .btn-gold,.btn-outline{width:100%;justify-content:center}
   .apt-detail-inner{gap:32px}
+  .stats-inner{gap:14px}
+  .stat-divider{display:none}
 }
 </style>
 </head>
@@ -529,7 +573,7 @@ h1,h2,h3,h4{font-family:var(--font-display);font-weight:400;line-height:1.3;font
      ======================================== -->
 <nav class="navbar" id="navbar">
 <div class="container">
-  <a href="#" class="nav-logo">Les <span>Terrasses</span></a>
+  <a href="#" class="nav-logo">Les <span>Terrasses</span><span class="nav-tagline" data-i18n="nav_tagline">Exquisite Stays</span></a>
   <div class="nav-links">
     <a href="#about" data-i18n="nav_about">Pourquoi nous</a>
     <a href="#apartments" data-i18n="nav_apartments">Appartements</a>
@@ -538,13 +582,14 @@ h1,h2,h3,h4{font-family:var(--font-display);font-weight:400;line-height:1.3;font
     <a href="#contact" data-i18n="nav_contact">Contact</a>
   </div>
   <div class="nav-right">
+    <a href="#apartments" class="nav-heart" aria-label="Favorites"><svg viewBox="0 0 24 24"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg></a>
     <div class="lang-switcher">
       <button class="lang-btn active" data-lang="fr">FR</button>
       <button class="lang-btn" data-lang="en">EN</button>
       <button class="lang-btn" data-lang="hr">HR</button>
       <button class="lang-btn" data-lang="de">DE</button>
     </div>
-    <a href="#booking" class="nav-cta" data-i18n="nav_cta">R&#233;server</a>
+    <a href="#contact" class="nav-cta" data-i18n="nav_cta">R&#233;server</a>
     <div class="hamburger" id="hamburger"><span></span><span></span><span></span></div>
   </div>
 </div>
@@ -557,7 +602,7 @@ h1,h2,h3,h4{font-family:var(--font-display);font-weight:400;line-height:1.3;font
   <a href="#gallery" data-i18n="nav_gallery" onclick="closeMobile()">Galerie</a>
   <a href="#faq" data-i18n="nav_faq" onclick="closeMobile()">FAQ</a>
   <a href="#contact" data-i18n="nav_contact" onclick="closeMobile()">Contact</a>
-  <a href="#booking" class="btn-gold" data-i18n="nav_cta" onclick="closeMobile()">R&#233;server</a>
+  <a href="#contact" class="btn-gold" data-i18n="nav_cta" onclick="closeMobile()">R&#233;server</a>
   <div class="lang-switcher">
     <button class="lang-btn active" data-lang="fr">FR</button>
     <button class="lang-btn" data-lang="en">EN</button>
@@ -567,12 +612,12 @@ h1,h2,h3,h4{font-family:var(--font-display);font-weight:400;line-height:1.3;font
 </div>
 
 <!-- ========================================
-     HERO (1. dark)
+     1. HERO (dark cinematic video)
      ======================================== -->
 <section class="hero" id="hero">
   <div class="hero-bg">
-    <video autoplay muted loop playsinline poster="https://framerusercontent.com/images/d6O91RIXcOoKEIAOkmGmnP7q5yM.jpg">
-      <source src="https://videos.pexels.com/video-files/5765039/5765039-hd_1920_1080_30fps.mp4" type="video/mp4">
+    <video id="heroVideo" autoplay muted loop playsinline poster="https://images.unsplash.com/photo-1507525428034-b723cf961d3e?w=1920&q=80">
+      <source src="https://cdn.pixabay.com/video/2020/07/30/45556-446820367_large.mp4" type="video/mp4">
     </video>
   </div>
   <div class="hero-content">
@@ -589,12 +634,43 @@ h1,h2,h3,h4{font-family:var(--font-display);font-weight:400;line-height:1.3;font
 </section>
 
 <!-- ========================================
-     INTRO (2. light warm)
+     2. STATS BAR (dark, compact)
+     ======================================== -->
+<section class="stats-bar">
+<div class="container">
+  <div class="stats-inner">
+    <div class="stat-item reveal">
+      <div class="stat-number" data-count="4">0</div>
+      <div class="stat-text" data-i18n="stat_apartments">Appartements</div>
+    </div>
+    <div class="stat-divider"></div>
+    <div class="stat-item reveal reveal-delay-1">
+      <div class="stat-number" data-i18n="stat_vue_val">Vue Mer</div>
+      <div class="stat-text" data-i18n="stat_vue">Panoramique</div>
+    </div>
+    <div class="stat-divider"></div>
+    <div class="stat-item reveal reveal-delay-2">
+      <div class="stat-number" data-i18n="stat_piscine_val">Piscine</div>
+      <div class="stat-text" data-i18n="stat_piscine">Commune</div>
+    </div>
+    <div class="stat-divider"></div>
+    <div class="stat-item reveal reveal-delay-3">
+      <div class="stat-number" data-count="50">0</div>
+      <div class="stat-text">m&#178; <span data-i18n="stat_each">chacun</span></div>
+    </div>
+  </div>
+</div>
+</section>
+
+<!-- ========================================
+     3. INTRO QUOTE (light warm)
      ======================================== -->
 <section class="intro" id="intro">
 <div class="container">
-  <p class="section-label reveal" data-i18n="intro_label">Bienvenue</p>
-  <h2 class="section-title dark reveal" data-i18n="intro_title">Un refuge d&#8217;exception</h2>
+  <div class="intro-quote reveal">
+    <blockquote data-i18n="intro_quote">Un havre de paix m&#233;diterran&#233;en, o&#249; chaque d&#233;tail invite &#224; la contemplation.</blockquote>
+    <cite>Les Terrasses de Lumbarda</cite>
+  </div>
   <div class="intro-text reveal">
     <p data-i18n="intro_text">Situ&#233;s &#224; Lumbarda, l&#8217;un des villages les plus pris&#233;s et authentiques de l&#8217;&#238;le de Kor&#269;ula, les appartements Les Terrasses offrent un cadre de s&#233;jour paisible et privil&#233;gi&#233;, &#224; seulement quelques minutes des plages aux eaux turquoise et du centre du village.</p>
   </div>
@@ -602,7 +678,7 @@ h1,h2,h3,h4{font-family:var(--font-display);font-weight:400;line-height:1.3;font
 </section>
 
 <!-- ========================================
-     APARTMENTS GRID (3. white)
+     4. APARTMENTS GRID (white)
      ======================================== -->
 <section class="apartments" id="apartments">
 <div class="container">
@@ -633,14 +709,14 @@ h1,h2,h3,h4{font-family:var(--font-display);font-weight:400;line-height:1.3;font
           <span><svg viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 9h18"/></svg> 50m&#178;</span>
         </div>
         <div class="apt-card-actions">
-          <a href="#booking" class="btn-gold" data-i18n="btn_reserve">R&#233;server</a>
+          <a href="#contact" class="btn-gold" data-i18n="btn_reserve">R&#233;server</a>
           <a href="#detail-horizon" class="link-discover"><span data-i18n="btn_discover">D&#233;couvrir</span> <svg viewBox="0 0 24 24"><polyline points="9 6 15 12 9 18"/></svg></a>
         </div>
       </div>
     </div>
 
     <!-- Azur -->
-    <div class="apt-card reveal">
+    <div class="apt-card reveal reveal-delay-1">
       <div class="card-carousel" data-carousel>
         <div class="slides">
           <div class="slide"><img src="https://framerusercontent.com/images/xN57AkWWihveVttFiRviniZZcE.jpeg" alt="Appartement Azur" loading="lazy"></div>
@@ -661,14 +737,14 @@ h1,h2,h3,h4{font-family:var(--font-display);font-weight:400;line-height:1.3;font
           <span><svg viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 9h18"/></svg> 50m&#178;</span>
         </div>
         <div class="apt-card-actions">
-          <a href="#booking" class="btn-gold" data-i18n="btn_reserve">R&#233;server</a>
+          <a href="#contact" class="btn-gold" data-i18n="btn_reserve">R&#233;server</a>
           <a href="#detail-azur" class="link-discover"><span data-i18n="btn_discover">D&#233;couvrir</span> <svg viewBox="0 0 24 24"><polyline points="9 6 15 12 9 18"/></svg></a>
         </div>
       </div>
     </div>
 
     <!-- Soleil -->
-    <div class="apt-card reveal">
+    <div class="apt-card reveal reveal-delay-2">
       <div class="card-carousel" data-carousel>
         <div class="slides">
           <div class="slide"><img src="https://framerusercontent.com/images/T1uS9VLWwvHDi5fT7JVwy1zVldk.jpeg" alt="Appartement Soleil" loading="lazy"></div>
@@ -689,14 +765,14 @@ h1,h2,h3,h4{font-family:var(--font-display);font-weight:400;line-height:1.3;font
           <span><svg viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 9h18"/></svg> 50m&#178;</span>
         </div>
         <div class="apt-card-actions">
-          <a href="#booking" class="btn-gold" data-i18n="btn_reserve">R&#233;server</a>
+          <a href="#contact" class="btn-gold" data-i18n="btn_reserve">R&#233;server</a>
           <a href="#detail-soleil" class="link-discover"><span data-i18n="btn_discover">D&#233;couvrir</span> <svg viewBox="0 0 24 24"><polyline points="9 6 15 12 9 18"/></svg></a>
         </div>
       </div>
     </div>
 
     <!-- Terrasse -->
-    <div class="apt-card reveal">
+    <div class="apt-card reveal reveal-delay-3">
       <div class="card-carousel" data-carousel>
         <div class="slides">
           <div class="slide"><img src="https://framerusercontent.com/images/h7ffYlYXsrLFHkaeTNhHIlsE0.jpeg" alt="Appartement Terrasse" loading="lazy"></div>
@@ -717,7 +793,7 @@ h1,h2,h3,h4{font-family:var(--font-display);font-weight:400;line-height:1.3;font
           <span><svg viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 9h18"/></svg> 50m&#178;</span>
         </div>
         <div class="apt-card-actions">
-          <a href="#booking" class="btn-gold" data-i18n="btn_reserve">R&#233;server</a>
+          <a href="#contact" class="btn-gold" data-i18n="btn_reserve">R&#233;server</a>
           <a href="#detail-terrasse" class="link-discover"><span data-i18n="btn_discover">D&#233;couvrir</span> <svg viewBox="0 0 24 24"><polyline points="9 6 15 12 9 18"/></svg></a>
         </div>
       </div>
@@ -728,7 +804,7 @@ h1,h2,h3,h4{font-family:var(--font-display);font-weight:400;line-height:1.3;font
 </section>
 
 <!-- ========================================
-     DETAIL: HORIZON (4. dark)
+     5. DETAIL: HORIZON (dark)
      ======================================== -->
 <section class="apt-detail dark-section" id="detail-horizon">
 <div class="container">
@@ -751,7 +827,7 @@ h1,h2,h3,h4{font-family:var(--font-display);font-weight:400;line-height:1.3;font
         <span><svg viewBox="0 0 24 24"><path d="M4 12h16M4 12a4 4 0 0 0 4 4h8a4 4 0 0 0 4-4M6 12V5a2 2 0 0 1 2-2h0a2 2 0 0 1 2 2v1"/></svg> 1 <span data-i18n="spec_sdb_full">salle de bain</span></span>
         <span><svg viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 9h18"/></svg> 50m&#178;</span>
       </div>
-      <div class="apt-detail-desc" data-i18n="apt_desc"><p>Appartement de charme &#224; Lumbarda avec terrasse privative, vue mer et acc&#232;s &#224; une piscine commune. Id&#233;al pour un s&#233;jour au calme sur l&#8217;&#238;le de Kor&#269;ula.</p><p>Nich&#233;s sur les hauteurs, les appartements b&#233;n&#233;ficient d&#8217;une situation exceptionnelle avec une vue d&#233;gag&#233;e sur la marina, la baie de Lumbarda et, en arri&#232;re-plan, la montagne Saint Ilia.</p><p>Chaque appartement comprend un s&#233;jour lumineux avec cuisine moderne enti&#232;rement &#233;quip&#233;e, une chambre confortable avec salle de bain, ainsi qu&#8217;une terrasse privative, parfaite pour profiter de moments conviviaux face &#224; la mer.</p></div>
+      <div class="apt-detail-desc" data-i18n="apt_desc_full"><p>Appartement de charme &#224; Lumbarda avec terrasse privative, vue mer et acc&#232;s &#224; une piscine commune. Id&#233;al pour un s&#233;jour au calme sur l&#8217;&#238;le de Kor&#269;ula.</p><p>Situ&#233;s &#224; Lumbarda, l&#8217;un des villages les plus pris&#233;s et authentiques de l&#8217;&#238;le de Kor&#269;ula, les appartements Les Terrasses offrent un cadre de s&#233;jour paisible et privil&#233;gi&#233;, &#224; seulement quelques minutes des plages aux eaux turquoise et du centre du village.</p><p>Nich&#233;s sur les hauteurs, les appartements b&#233;n&#233;ficient d&#8217;une situation exceptionnelle avec une vue d&#233;gag&#233;e sur la marina, la baie de Lumbarda et, en arri&#232;re-plan, la montagne Saint Ilia.</p><p>Chaque appartement comprend un s&#233;jour lumineux avec cuisine moderne enti&#232;rement &#233;quip&#233;e, une chambre confortable avec salle de bain, ainsi qu&#8217;une terrasse privative. Une place de parking privative est &#233;galement incluse.</p></div>
       <div class="amenities-grid">
         <div class="amenity-item"><svg viewBox="0 0 24 24"><rect x="2" y="12" width="20" height="8" rx="1"/><path d="M4 12V8a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v4"/></svg> <span data-i18n="amenity_terrasse">Terrasse privative</span></div>
         <div class="amenity-item"><svg viewBox="0 0 24 24"><path d="M2 12s4-8 10-8 10 8 10 8-4 8-10 8S2 12 2 12z"/><circle cx="12" cy="12" r="3"/></svg> <span data-i18n="amenity_vue">Vue mer</span></div>
@@ -760,14 +836,14 @@ h1,h2,h3,h4{font-family:var(--font-display);font-weight:400;line-height:1.3;font
         <div class="amenity-item"><svg viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 12h18M12 3v18"/></svg> <span data-i18n="amenity_parking">Parking priv&#233;</span></div>
         <div class="amenity-item"><svg viewBox="0 0 24 24"><path d="M5 12.55a11 11 0 0 1 14.08 0"/><path d="M1.42 9a16 16 0 0 1 21.16 0"/><path d="M8.53 16.11a6 6 0 0 1 6.95 0"/><circle cx="12" cy="20" r="1"/></svg> <span data-i18n="amenity_wifi">Wifi haut d&#233;bit</span></div>
       </div>
-      <a href="#booking" class="btn-book-large" data-i18n="btn_book_booking">R&#233;server sur Booking.com</a>
+      <a href="#contact" class="btn-book-large" data-i18n="btn_book_apt">R&#233;server cet appartement</a>
     </div>
   </div>
 </div>
 </section>
 
 <!-- ========================================
-     DETAIL: AZUR (5. light warm) - reversed
+     6. DETAIL: AZUR (light warm) - reversed
      ======================================== -->
 <section class="apt-detail light-section reverse" id="detail-azur">
 <div class="container">
@@ -790,7 +866,7 @@ h1,h2,h3,h4{font-family:var(--font-display);font-weight:400;line-height:1.3;font
         <span><svg viewBox="0 0 24 24"><path d="M4 12h16M4 12a4 4 0 0 0 4 4h8a4 4 0 0 0 4-4M6 12V5a2 2 0 0 1 2-2h0a2 2 0 0 1 2 2v1"/></svg> 1 <span data-i18n="spec_sdb_full">salle de bain</span></span>
         <span><svg viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 9h18"/></svg> 50m&#178;</span>
       </div>
-      <div class="apt-detail-desc" data-i18n="apt_desc"><p>Appartement de charme &#224; Lumbarda avec terrasse privative, vue mer et acc&#232;s &#224; une piscine commune. Id&#233;al pour un s&#233;jour au calme sur l&#8217;&#238;le de Kor&#269;ula.</p><p>Nich&#233;s sur les hauteurs, les appartements b&#233;n&#233;ficient d&#8217;une situation exceptionnelle avec une vue d&#233;gag&#233;e sur la marina, la baie de Lumbarda et, en arri&#232;re-plan, la montagne Saint Ilia.</p><p>Chaque appartement comprend un s&#233;jour lumineux avec cuisine moderne enti&#232;rement &#233;quip&#233;e, une chambre confortable avec salle de bain, ainsi qu&#8217;une terrasse privative, parfaite pour profiter de moments conviviaux face &#224; la mer.</p></div>
+      <div class="apt-detail-desc" data-i18n="apt_desc_full"><p>Appartement de charme &#224; Lumbarda avec terrasse privative, vue mer et acc&#232;s &#224; une piscine commune. Id&#233;al pour un s&#233;jour au calme sur l&#8217;&#238;le de Kor&#269;ula.</p><p>Situ&#233;s &#224; Lumbarda, l&#8217;un des villages les plus pris&#233;s et authentiques de l&#8217;&#238;le de Kor&#269;ula, les appartements Les Terrasses offrent un cadre de s&#233;jour paisible et privil&#233;gi&#233;, &#224; seulement quelques minutes des plages aux eaux turquoise et du centre du village.</p><p>Nich&#233;s sur les hauteurs, les appartements b&#233;n&#233;ficient d&#8217;une situation exceptionnelle avec une vue d&#233;gag&#233;e sur la marina, la baie de Lumbarda et, en arri&#232;re-plan, la montagne Saint Ilia.</p><p>Chaque appartement comprend un s&#233;jour lumineux avec cuisine moderne enti&#232;rement &#233;quip&#233;e, une chambre confortable avec salle de bain, ainsi qu&#8217;une terrasse privative. Une place de parking privative est &#233;galement incluse.</p></div>
       <div class="amenities-grid">
         <div class="amenity-item"><svg viewBox="0 0 24 24"><rect x="2" y="12" width="20" height="8" rx="1"/><path d="M4 12V8a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v4"/></svg> <span data-i18n="amenity_terrasse">Terrasse privative</span></div>
         <div class="amenity-item"><svg viewBox="0 0 24 24"><path d="M2 12s4-8 10-8 10 8 10 8-4 8-10 8S2 12 2 12z"/><circle cx="12" cy="12" r="3"/></svg> <span data-i18n="amenity_vue">Vue mer</span></div>
@@ -799,14 +875,14 @@ h1,h2,h3,h4{font-family:var(--font-display);font-weight:400;line-height:1.3;font
         <div class="amenity-item"><svg viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 12h18M12 3v18"/></svg> <span data-i18n="amenity_parking">Parking priv&#233;</span></div>
         <div class="amenity-item"><svg viewBox="0 0 24 24"><path d="M5 12.55a11 11 0 0 1 14.08 0"/><path d="M1.42 9a16 16 0 0 1 21.16 0"/><path d="M8.53 16.11a6 6 0 0 1 6.95 0"/><circle cx="12" cy="20" r="1"/></svg> <span data-i18n="amenity_wifi">Wifi haut d&#233;bit</span></div>
       </div>
-      <a href="#booking" class="btn-book-large" data-i18n="btn_book_booking">R&#233;server sur Booking.com</a>
+      <a href="#contact" class="btn-book-large" data-i18n="btn_book_apt">R&#233;server cet appartement</a>
     </div>
   </div>
 </div>
 </section>
 
 <!-- ========================================
-     DETAIL: SOLEIL (6. dark)
+     7. DETAIL: SOLEIL (dark)
      ======================================== -->
 <section class="apt-detail dark-section" id="detail-soleil">
 <div class="container">
@@ -829,7 +905,7 @@ h1,h2,h3,h4{font-family:var(--font-display);font-weight:400;line-height:1.3;font
         <span><svg viewBox="0 0 24 24"><path d="M4 12h16M4 12a4 4 0 0 0 4 4h8a4 4 0 0 0 4-4M6 12V5a2 2 0 0 1 2-2h0a2 2 0 0 1 2 2v1"/></svg> 1 <span data-i18n="spec_sdb_full">salle de bain</span></span>
         <span><svg viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 9h18"/></svg> 50m&#178;</span>
       </div>
-      <div class="apt-detail-desc" data-i18n="apt_desc"><p>Appartement de charme &#224; Lumbarda avec terrasse privative, vue mer et acc&#232;s &#224; une piscine commune. Id&#233;al pour un s&#233;jour au calme sur l&#8217;&#238;le de Kor&#269;ula.</p><p>Nich&#233;s sur les hauteurs, les appartements b&#233;n&#233;ficient d&#8217;une situation exceptionnelle avec une vue d&#233;gag&#233;e sur la marina, la baie de Lumbarda et, en arri&#232;re-plan, la montagne Saint Ilia.</p><p>Chaque appartement comprend un s&#233;jour lumineux avec cuisine moderne enti&#232;rement &#233;quip&#233;e, une chambre confortable avec salle de bain, ainsi qu&#8217;une terrasse privative, parfaite pour profiter de moments conviviaux face &#224; la mer.</p></div>
+      <div class="apt-detail-desc" data-i18n="apt_desc_full"><p>Appartement de charme &#224; Lumbarda avec terrasse privative, vue mer et acc&#232;s &#224; une piscine commune. Id&#233;al pour un s&#233;jour au calme sur l&#8217;&#238;le de Kor&#269;ula.</p><p>Situ&#233;s &#224; Lumbarda, l&#8217;un des villages les plus pris&#233;s et authentiques de l&#8217;&#238;le de Kor&#269;ula, les appartements Les Terrasses offrent un cadre de s&#233;jour paisible et privil&#233;gi&#233;, &#224; seulement quelques minutes des plages aux eaux turquoise et du centre du village.</p><p>Nich&#233;s sur les hauteurs, les appartements b&#233;n&#233;ficient d&#8217;une situation exceptionnelle avec une vue d&#233;gag&#233;e sur la marina, la baie de Lumbarda et, en arri&#232;re-plan, la montagne Saint Ilia.</p><p>Chaque appartement comprend un s&#233;jour lumineux avec cuisine moderne enti&#232;rement &#233;quip&#233;e, une chambre confortable avec salle de bain, ainsi qu&#8217;une terrasse privative. Une place de parking privative est &#233;galement incluse.</p></div>
       <div class="amenities-grid">
         <div class="amenity-item"><svg viewBox="0 0 24 24"><rect x="2" y="12" width="20" height="8" rx="1"/><path d="M4 12V8a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v4"/></svg> <span data-i18n="amenity_terrasse">Terrasse privative</span></div>
         <div class="amenity-item"><svg viewBox="0 0 24 24"><path d="M2 12s4-8 10-8 10 8 10 8-4 8-10 8S2 12 2 12z"/><circle cx="12" cy="12" r="3"/></svg> <span data-i18n="amenity_vue">Vue mer</span></div>
@@ -838,14 +914,14 @@ h1,h2,h3,h4{font-family:var(--font-display);font-weight:400;line-height:1.3;font
         <div class="amenity-item"><svg viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 12h18M12 3v18"/></svg> <span data-i18n="amenity_parking">Parking priv&#233;</span></div>
         <div class="amenity-item"><svg viewBox="0 0 24 24"><path d="M5 12.55a11 11 0 0 1 14.08 0"/><path d="M1.42 9a16 16 0 0 1 21.16 0"/><path d="M8.53 16.11a6 6 0 0 1 6.95 0"/><circle cx="12" cy="20" r="1"/></svg> <span data-i18n="amenity_wifi">Wifi haut d&#233;bit</span></div>
       </div>
-      <a href="#booking" class="btn-book-large" data-i18n="btn_book_booking">R&#233;server sur Booking.com</a>
+      <a href="#contact" class="btn-book-large" data-i18n="btn_book_apt">R&#233;server cet appartement</a>
     </div>
   </div>
 </div>
 </section>
 
 <!-- ========================================
-     DETAIL: TERRASSE (7. light warm) - reversed
+     8. DETAIL: TERRASSE (light warm) - reversed
      ======================================== -->
 <section class="apt-detail light-section reverse" id="detail-terrasse">
 <div class="container">
@@ -868,7 +944,7 @@ h1,h2,h3,h4{font-family:var(--font-display);font-weight:400;line-height:1.3;font
         <span><svg viewBox="0 0 24 24"><path d="M4 12h16M4 12a4 4 0 0 0 4 4h8a4 4 0 0 0 4-4M6 12V5a2 2 0 0 1 2-2h0a2 2 0 0 1 2 2v1"/></svg> 1 <span data-i18n="spec_sdb_full">salle de bain</span></span>
         <span><svg viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 9h18"/></svg> 50m&#178;</span>
       </div>
-      <div class="apt-detail-desc" data-i18n="apt_desc"><p>Appartement de charme &#224; Lumbarda avec terrasse privative, vue mer et acc&#232;s &#224; une piscine commune. Id&#233;al pour un s&#233;jour au calme sur l&#8217;&#238;le de Kor&#269;ula.</p><p>Nich&#233;s sur les hauteurs, les appartements b&#233;n&#233;ficient d&#8217;une situation exceptionnelle avec une vue d&#233;gag&#233;e sur la marina, la baie de Lumbarda et, en arri&#232;re-plan, la montagne Saint Ilia.</p><p>Chaque appartement comprend un s&#233;jour lumineux avec cuisine moderne enti&#232;rement &#233;quip&#233;e, une chambre confortable avec salle de bain, ainsi qu&#8217;une terrasse privative, parfaite pour profiter de moments conviviaux face &#224; la mer.</p></div>
+      <div class="apt-detail-desc" data-i18n="apt_desc_full"><p>Appartement de charme &#224; Lumbarda avec terrasse privative, vue mer et acc&#232;s &#224; une piscine commune. Id&#233;al pour un s&#233;jour au calme sur l&#8217;&#238;le de Kor&#269;ula.</p><p>Situ&#233;s &#224; Lumbarda, l&#8217;un des villages les plus pris&#233;s et authentiques de l&#8217;&#238;le de Kor&#269;ula, les appartements Les Terrasses offrent un cadre de s&#233;jour paisible et privil&#233;gi&#233;, &#224; seulement quelques minutes des plages aux eaux turquoise et du centre du village.</p><p>Nich&#233;s sur les hauteurs, les appartements b&#233;n&#233;ficient d&#8217;une situation exceptionnelle avec une vue d&#233;gag&#233;e sur la marina, la baie de Lumbarda et, en arri&#232;re-plan, la montagne Saint Ilia.</p><p>Chaque appartement comprend un s&#233;jour lumineux avec cuisine moderne enti&#232;rement &#233;quip&#233;e, une chambre confortable avec salle de bain, ainsi qu&#8217;une terrasse privative. Une place de parking privative est &#233;galement incluse.</p></div>
       <div class="amenities-grid">
         <div class="amenity-item"><svg viewBox="0 0 24 24"><rect x="2" y="12" width="20" height="8" rx="1"/><path d="M4 12V8a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v4"/></svg> <span data-i18n="amenity_terrasse">Terrasse privative</span></div>
         <div class="amenity-item"><svg viewBox="0 0 24 24"><path d="M2 12s4-8 10-8 10 8 10 8-4 8-10 8S2 12 2 12z"/><circle cx="12" cy="12" r="3"/></svg> <span data-i18n="amenity_vue">Vue mer</span></div>
@@ -877,14 +953,14 @@ h1,h2,h3,h4{font-family:var(--font-display);font-weight:400;line-height:1.3;font
         <div class="amenity-item"><svg viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 12h18M12 3v18"/></svg> <span data-i18n="amenity_parking">Parking priv&#233;</span></div>
         <div class="amenity-item"><svg viewBox="0 0 24 24"><path d="M5 12.55a11 11 0 0 1 14.08 0"/><path d="M1.42 9a16 16 0 0 1 21.16 0"/><path d="M8.53 16.11a6 6 0 0 1 6.95 0"/><circle cx="12" cy="20" r="1"/></svg> <span data-i18n="amenity_wifi">Wifi haut d&#233;bit</span></div>
       </div>
-      <a href="#booking" class="btn-book-large" data-i18n="btn_book_booking">R&#233;server sur Booking.com</a>
+      <a href="#contact" class="btn-book-large" data-i18n="btn_book_apt">R&#233;server cet appartement</a>
     </div>
   </div>
 </div>
 </section>
 
 <!-- ========================================
-     ABOUT / WHY (8. dark)
+     9. ABOUT / WHY (dark)
      ======================================== -->
 <section class="about" id="about">
 <div class="container">
@@ -912,7 +988,7 @@ h1,h2,h3,h4{font-family:var(--font-display);font-weight:400;line-height:1.3;font
 </section>
 
 <!-- ========================================
-     GALLERY (9. white)
+     10. GALLERY (white)
      ======================================== -->
 <section class="gallery" id="gallery">
 <div class="container">
@@ -941,7 +1017,7 @@ h1,h2,h3,h4{font-family:var(--font-display);font-weight:400;line-height:1.3;font
 </div>
 
 <!-- ========================================
-     FAQ (10. light warm)
+     11. FAQ (light warm)
      ======================================== -->
 <section class="faq" id="faq">
 <div class="container">
@@ -974,7 +1050,7 @@ h1,h2,h3,h4{font-family:var(--font-display);font-weight:400;line-height:1.3;font
 </section>
 
 <!-- ========================================
-     CONTACT (11. dark)
+     12. CONTACT (dark)
      ======================================== -->
 <section class="contact" id="contact">
 <div class="container">
@@ -1013,13 +1089,14 @@ h1,h2,h3,h4{font-family:var(--font-display);font-weight:400;line-height:1.3;font
 </section>
 
 <!-- ========================================
-     FOOTER (12. black)
+     13. FOOTER (black)
      ======================================== -->
 <footer class="footer">
 <div class="container">
   <div class="footer-grid">
     <div class="footer-brand">
       <div class="footer-logo">Les <span>Terrasses</span></div>
+      <span class="footer-tagline">Exquisite Stays</span>
       <p data-i18n="footer_desc">Appartements de charme avec terrasse privative, vue mer et piscine commune &#224; Lumbarda, &#238;le de Kor&#269;ula.</p>
     </div>
     <div>
@@ -1051,14 +1128,14 @@ h1,h2,h3,h4{font-family:var(--font-display);font-weight:400;line-height:1.3;font
    TRANSLATIONS (FR / EN / HR / DE)
    ========================================================= */
 var T={
-fr:{nav_about:"Pourquoi nous",nav_apartments:"Appartements",nav_gallery:"Galerie",nav_faq:"FAQ",nav_contact:"Contact",nav_cta:"R\u00e9server",hero_title:"Les Terrasses de Lumbarda",hero_location:"Lumbarda, \u00cele de Kor\u010dula \u2014 Croatie",hero_desc:"Appartements de charme avec terrasse privative, vue mer et piscine commune",hero_cta1:"D\u00e9couvrir nos appartements",hero_cta2:"R\u00e9server maintenant",intro_label:"Bienvenue",intro_title:"Un refuge d\u2019exception",intro_text:"Situ\u00e9s \u00e0 Lumbarda, l\u2019un des villages les plus pris\u00e9s et authentiques de l\u2019\u00eele de Kor\u010dula, les appartements Les Terrasses offrent un cadre de s\u00e9jour paisible et privil\u00e9gi\u00e9, \u00e0 seulement quelques minutes des plages aux eaux turquoise et du centre du village.",about_label:"L\u2019exp\u00e9rience",about_title:"Pourquoi Les Terrasses ?",about_subtitle:"Un \u00e9crin de calme et de beaut\u00e9 sur l\u2019\u00eele de Kor\u010dula",about_f1_title:"Un emplacement privil\u00e9gi\u00e9",about_f1_desc:"Sur les hauteurs de Lumbarda, vue sur la marina et la baie, \u00e0 quelques minutes des plages cristallines",about_f2_title:"Confort & art de vivre",about_f2_desc:"S\u00e9jour lumineux, cuisine \u00e9quip\u00e9e, terrasse privative, piscine commune face \u00e0 la mer",about_f3_title:"Des vacances en toute s\u00e9r\u00e9nit\u00e9",about_f3_desc:"M\u00e9nage hebdomadaire, linge fourni, entretien piscine et jardin, parking priv\u00e9 inclus",apt_label:"Collection",apt_title:"Nos Appartements",apt_subtitle:"Quatre appartements de charme, chacun avec terrasse privative et vue mer",price_badge:"\u00c0 partir de 120\u20ac/nuit",spec_ch:"ch",spec_sdb:"sdb",spec_chambre:"chambre",spec_sdb_full:"salle de bain",btn_reserve:"R\u00e9server",btn_discover:"D\u00e9couvrir",btn_book_booking:"R\u00e9server sur Booking.com",apt_desc:"<p>Appartement de charme \u00e0 Lumbarda avec terrasse privative, vue mer et acc\u00e8s \u00e0 une piscine commune. Id\u00e9al pour un s\u00e9jour au calme sur l\u2019\u00eele de Kor\u010dula.</p><p>Nich\u00e9s sur les hauteurs, les appartements b\u00e9n\u00e9ficient d\u2019une situation exceptionnelle avec une vue d\u00e9gag\u00e9e sur la marina, la baie de Lumbarda et, en arri\u00e8re-plan, la montagne Saint Ilia.</p><p>Chaque appartement comprend un s\u00e9jour lumineux avec cuisine moderne enti\u00e8rement \u00e9quip\u00e9e, une chambre confortable avec salle de bain, ainsi qu\u2019une terrasse privative, parfaite pour profiter de moments conviviaux face \u00e0 la mer.</p>",amenity_terrasse:"Terrasse privative",amenity_vue:"Vue mer",amenity_piscine:"Piscine commune",amenity_cuisine:"Cuisine \u00e9quip\u00e9e",amenity_parking:"Parking priv\u00e9",amenity_wifi:"Wifi haut d\u00e9bit",gallery_label:"Galerie",gallery_title:"Galerie",gallery_subtitle:"D\u00e9couvrez Les Terrasses en images",faq_label:"Informations",faq_title:"Questions fr\u00e9quentes",faq_subtitle:"Tout ce que vous devez savoir pour votre s\u00e9jour",faq_q1:"Comment r\u00e9server un appartement ?",faq_a1:"Vous pouvez r\u00e9server directement via notre formulaire de contact ci-dessous ou sur les plateformes Booking.com et Airbnb. Nous vous recommandons de r\u00e9server \u00e0 l\u2019avance, surtout pour la haute saison (juin \u00e0 septembre).",faq_q2:"Quels sont les \u00e9quipements inclus ?",faq_a2:"Chaque appartement comprend : terrasse privative avec vue mer, cuisine enti\u00e8rement \u00e9quip\u00e9e, salle de bain moderne, wifi haut d\u00e9bit, climatisation, linge de maison et serviettes. Vous avez \u00e9galement acc\u00e8s \u00e0 la piscine commune et \u00e0 un parking priv\u00e9.",faq_q3:"Quel est le prix par nuit ?",faq_a3:"Les tarifs varient selon la saison. En basse saison \u00e0 partir de 90\u20ac/nuit, en moyenne saison \u00e0 partir de 120\u20ac/nuit, et en haute saison \u00e0 partir de 150\u20ac/nuit. Contactez-nous pour un devis personnalis\u00e9 selon vos dates.",faq_q4:"Comment se rendre \u00e0 Lumbarda ?",faq_a4:"Lumbarda se trouve sur l\u2019\u00eele de Kor\u010dula en Croatie. Vous pouvez y acc\u00e9der par ferry depuis Split, Dubrovnik ou Orebi\u0107. L\u2019a\u00e9roport le plus proche est celui de Dubrovnik (2h) ou Split (3h avec ferry). Nous pouvons organiser un transfert depuis le port de Kor\u010dula.",faq_q5:"Y a-t-il un parking ?",faq_a5:"Oui, chaque appartement dispose d\u2019une place de parking priv\u00e9e gratuite. Si vous avez besoin d\u2019une voiture, nous pouvons \u00e9galement vous aider \u00e0 organiser une location de v\u00e9hicule sur place.",contact_label:"Contact",contact_title:"Contactez-nous",contact_subtitle:"Une question ? Envoyez-nous un message",form_name:"Nom complet",form_email:"Email",form_dates:"Dates souhait\u00e9es",form_apt:"Appartement",form_apt_placeholder:"Choisir un appartement",form_message:"Message",form_submit:"Envoyer le message",contact_info_title:"Informations",contact_checkin:"Check-in : 15h00 - 20h00<br>Check-out : avant 10h00",footer_desc:"Appartements de charme avec terrasse privative, vue mer et piscine commune \u00e0 Lumbarda, \u00eele de Kor\u010dula.",footer_links_title:"Liens rapides",footer_follow:"Suivez-nous",footer_rights:"Tous droits r\u00e9serv\u00e9s."},
-en:{nav_about:"Why us",nav_apartments:"Apartments",nav_gallery:"Gallery",nav_faq:"FAQ",nav_contact:"Contact",nav_cta:"Book now",hero_title:"Les Terrasses de Lumbarda",hero_location:"Lumbarda, Island of Kor\u010dula \u2014 Croatia",hero_desc:"Charming apartments with private terrace, sea view and shared pool",hero_cta1:"Discover our apartments",hero_cta2:"Book now",intro_label:"Welcome",intro_title:"An exceptional retreat",intro_text:"Located in Lumbarda, one of the most sought-after and authentic villages on the island of Kor\u010dula, Les Terrasses apartments offer a peaceful and privileged setting, just minutes from turquoise beaches and the village center.",about_label:"The experience",about_title:"Why Les Terrasses?",about_subtitle:"A haven of peace and beauty on the island of Kor\u010dula",about_f1_title:"A prime location",about_f1_desc:"On the heights of Lumbarda, overlooking the marina and bay, just minutes from crystal-clear beaches",about_f2_title:"Comfort & lifestyle",about_f2_desc:"Bright living area, equipped kitchen, private terrace, shared pool facing the sea",about_f3_title:"Stress-free holidays",about_f3_desc:"Weekly cleaning, linen provided, pool and garden maintenance, private parking included",apt_label:"Collection",apt_title:"Our Apartments",apt_subtitle:"Four charming apartments, each with private terrace and sea view",price_badge:"From \u20ac120/night",spec_ch:"bed",spec_sdb:"bath",spec_chambre:"bedroom",spec_sdb_full:"bathroom",btn_reserve:"Book",btn_discover:"Discover",btn_book_booking:"Book on Booking.com",apt_desc:"<p>Charming apartment in Lumbarda with private terrace, sea view and access to a shared pool. Perfect for a peaceful stay on the island of Kor\u010dula.</p><p>Perched on the heights, the apartments enjoy an exceptional location with open views of the marina, Lumbarda bay and, in the background, Mount Saint Ilia.</p><p>Each apartment includes a bright living room with a fully equipped modern kitchen, a comfortable bedroom with bathroom, and a private terrace, perfect for enjoying convivial moments facing the sea.</p>",amenity_terrasse:"Private terrace",amenity_vue:"Sea view",amenity_piscine:"Shared pool",amenity_cuisine:"Equipped kitchen",amenity_parking:"Private parking",amenity_wifi:"High-speed Wifi",gallery_label:"Gallery",gallery_title:"Gallery",gallery_subtitle:"Discover Les Terrasses in pictures",faq_label:"Information",faq_title:"Frequently Asked Questions",faq_subtitle:"Everything you need to know for your stay",faq_q1:"How do I book an apartment?",faq_a1:"You can book directly via our contact form below or on Booking.com and Airbnb. We recommend booking in advance, especially for high season (June to September).",faq_q2:"What amenities are included?",faq_a2:"Each apartment includes: private terrace with sea view, fully equipped kitchen, modern bathroom, high-speed wifi, air conditioning, household linen and towels. You also have access to the shared pool and private parking.",faq_q3:"What is the price per night?",faq_a3:"Rates vary by season. Low season from \u20ac90/night, mid-season from \u20ac120/night, and high season from \u20ac150/night. Contact us for a personalized quote for your dates.",faq_q4:"How do I get to Lumbarda?",faq_a4:"Lumbarda is on the island of Kor\u010dula in Croatia. You can get there by ferry from Split, Dubrovnik or Orebi\u0107. The nearest airport is Dubrovnik (2h) or Split (3h with ferry). We can arrange a transfer from the port of Kor\u010dula.",faq_q5:"Is there parking?",faq_a5:"Yes, each apartment has a free private parking space. If you need a car, we can also help arrange a vehicle rental on site.",contact_label:"Contact",contact_title:"Contact us",contact_subtitle:"Have a question? Send us a message",form_name:"Full name",form_email:"Email",form_dates:"Desired dates",form_apt:"Apartment",form_apt_placeholder:"Choose an apartment",form_message:"Message",form_submit:"Send message",contact_info_title:"Information",contact_checkin:"Check-in: 3:00 PM - 8:00 PM<br>Check-out: before 10:00 AM",footer_desc:"Charming apartments with private terrace, sea view and shared pool in Lumbarda, island of Kor\u010dula.",footer_links_title:"Quick links",footer_follow:"Follow us",footer_rights:"All rights reserved."},
-hr:{nav_about:"Za\u0161to mi",nav_apartments:"Apartmani",nav_gallery:"Galerija",nav_faq:"FAQ",nav_contact:"Kontakt",nav_cta:"Rezerviraj",hero_title:"Les Terrasses de Lumbarda",hero_location:"Lumbarda, Otok Kor\u010dula \u2014 Hrvatska",hero_desc:"\u0160armantni apartmani s privatnom terasom, pogledom na more i zajedni\u010dkim bazenom",hero_cta1:"Otkrijte na\u0161e apartmane",hero_cta2:"Rezervirajte sada",intro_label:"Dobrodo\u0161li",intro_title:"Iznimno uto\u010di\u0161te",intro_text:"Smje\u0161teni u Lumbardi, jednom od najtra\u017eenijih i najautenti\u010dnijih sela na otoku Kor\u010duli, apartmani Les Terrasses nude miran i privilegiran ambijent, samo nekoliko minuta od pla\u017ea s tirkiznom vodom i centra sela.",about_label:"Iskustvo",about_title:"Za\u0161to Les Terrasses?",about_subtitle:"Oaza mira i ljepote na otoku Kor\u010duli",about_f1_title:"Privilegirani polo\u017eaj",about_f1_desc:"Na uzvisini Lumbarde, s pogledom na marinu i zaljev, samo nekoliko minuta od kristalno \u010distih pla\u017ea",about_f2_title:"Udobnost i stil \u017eivota",about_f2_desc:"Svijetli dnevni boravak, opremljena kuhinja, privatna terasa, zajedni\u010dki bazen s pogledom na more",about_f3_title:"Odmor bez briga",about_f3_desc:"Tjedno \u010di\u0161\u0107enje, posteljina uklju\u010dena, odr\u017eavanje bazena i vrta, privatni parking uklju\u010den",apt_label:"Kolekcija",apt_title:"Na\u0161i apartmani",apt_subtitle:"\u010cetiri \u0161armantna apartmana, svaki s privatnom terasom i pogledom na more",price_badge:"Od 120\u20ac/no\u0107",spec_ch:"spav",spec_sdb:"kup",spec_chambre:"spava\u0107a soba",spec_sdb_full:"kupaonica",btn_reserve:"Rezerviraj",btn_discover:"Otkrijte",btn_book_booking:"Rezervirajte na Booking.com",apt_desc:"<p>\u0160armantan apartman u Lumbardi s privatnom terasom, pogledom na more i pristupom zajedni\u010dkom bazenu. Idealan za miran boravak na otoku Kor\u010duli.</p><p>Smje\u0161teni na uzvisini, apartmani u\u017eivaju izniman polo\u017eaj s otvorenim pogledom na marinu, zaljev Lumbarde i, u pozadini, planinu Sveti Ilija.</p><p>Svaki apartman uklju\u010duje svijetli dnevni boravak s potpuno opremljenom modernom kuhinjom, udobnu spava\u0107u sobu s kupaonicom te privatnu terasu, savr\u0161enu za u\u017eivanje u dru\u017eenju uz pogled na more.</p>",amenity_terrasse:"Privatna terasa",amenity_vue:"Pogled na more",amenity_piscine:"Zajedni\u010dki bazen",amenity_cuisine:"Opremljena kuhinja",amenity_parking:"Privatni parking",amenity_wifi:"Brzi Wifi",gallery_label:"Galerija",gallery_title:"Galerija",gallery_subtitle:"Otkrijte Les Terrasses u slikama",faq_label:"Informacije",faq_title:"\u010cesta pitanja",faq_subtitle:"Sve \u0161to trebate znati za svoj boravak",faq_q1:"Kako rezervirati apartman?",faq_a1:"Mo\u017eete rezervirati izravno putem na\u0161eg kontakt obrasca ili na platformama Booking.com i Airbnb. Preporu\u010damo rezervaciju unaprijed, osobito za visoku sezonu (lipanj do rujan).",faq_q2:"Koji su sadr\u017eaji uklju\u010deni?",faq_a2:"Svaki apartman uklju\u010duje: privatnu terasu s pogledom na more, potpuno opremljenu kuhinju, modernu kupaonicu, brzi wifi, klimu, posteljinu i ru\u010dnike. Tako\u0111er imate pristup zajedni\u010dkom bazenu i privatnom parkingu.",faq_q3:"Koja je cijena po no\u0107enju?",faq_a3:"Cijene variraju prema sezoni. U niskoj sezoni od 90\u20ac/no\u0107, u srednjoj sezoni od 120\u20ac/no\u0107, a u visokoj sezoni od 150\u20ac/no\u0107. Kontaktirajte nas za personaliziranu ponudu prema va\u0161im datumima.",faq_q4:"Kako do\u0107i do Lumbarde?",faq_a4:"Lumbarda se nalazi na otoku Kor\u010duli u Hrvatskoj. Mo\u017eete do\u0107i trajektom iz Splita, Dubrovnika ili Orebi\u0107a. Najbli\u017ea zra\u010dna luka je Dubrovnik (2h) ili Split (3h s trajektom). Mo\u017eemo organizirati transfer iz luke Kor\u010dula.",faq_q5:"Ima li parking?",faq_a5:"Da, svaki apartman ima besplatno privatno parkirno mjesto. Ako trebate automobil, mo\u017eemo vam tako\u0111er pomo\u0107i organizirati najam vozila na licu mjesta.",contact_label:"Kontakt",contact_title:"Kontaktirajte nas",contact_subtitle:"Imate pitanje? Po\u0161aljite nam poruku",form_name:"Puno ime",form_email:"Email",form_dates:"\u017deljeni datumi",form_apt:"Apartman",form_apt_placeholder:"Odaberite apartman",form_message:"Poruka",form_submit:"Po\u0161alji poruku",contact_info_title:"Informacije",contact_checkin:"Prijava: 15:00 - 20:00<br>Odjava: prije 10:00",footer_desc:"\u0160armantni apartmani s privatnom terasom, pogledom na more i zajedni\u010dkim bazenom u Lumbardi, otok Kor\u010dula.",footer_links_title:"Brzi linkovi",footer_follow:"Pratite nas",footer_rights:"Sva prava pridr\u017eana."},
-de:{nav_about:"Warum wir",nav_apartments:"Apartments",nav_gallery:"Galerie",nav_faq:"FAQ",nav_contact:"Kontakt",nav_cta:"Buchen",hero_title:"Les Terrasses de Lumbarda",hero_location:"Lumbarda, Insel Kor\u010dula \u2014 Kroatien",hero_desc:"Charmante Apartments mit privater Terrasse, Meerblick und Gemeinschaftspool",hero_cta1:"Unsere Apartments entdecken",hero_cta2:"Jetzt buchen",intro_label:"Willkommen",intro_title:"Ein au\u00dfergew\u00f6hnlicher R\u00fcckzugsort",intro_text:"Die Apartments Les Terrasses befinden sich in Lumbarda, einem der beliebtesten und authentischsten D\u00f6rfer der Insel Kor\u010dula, und bieten eine ruhige und privilegierte Umgebung, nur wenige Minuten von t\u00fcrkisfarbenen Str\u00e4nden und dem Dorfzentrum entfernt.",about_label:"Das Erlebnis",about_title:"Warum Les Terrasses?",about_subtitle:"Eine Oase der Ruhe und Sch\u00f6nheit auf der Insel Kor\u010dula",about_f1_title:"Erstklassige Lage",about_f1_desc:"Auf den H\u00f6hen von Lumbarda, mit Blick auf den Yachthafen und die Bucht, nur wenige Minuten von kristallklaren Str\u00e4nden entfernt",about_f2_title:"Komfort & Lebensart",about_f2_desc:"Heller Wohnbereich, ausgestattete K\u00fcche, private Terrasse, Gemeinschaftspool mit Meerblick",about_f3_title:"Sorgenfreier Urlaub",about_f3_desc:"W\u00f6chentliche Reinigung, W\u00e4sche inklusive, Pool- und Gartenpflege, privater Parkplatz inklusive",apt_label:"Kollektion",apt_title:"Unsere Apartments",apt_subtitle:"Vier charmante Apartments, jedes mit privater Terrasse und Meerblick",price_badge:"Ab 120\u20ac/Nacht",spec_ch:"Schlafz",spec_sdb:"Bad",spec_chambre:"Schlafzimmer",spec_sdb_full:"Badezimmer",btn_reserve:"Buchen",btn_discover:"Entdecken",btn_book_booking:"Auf Booking.com buchen",apt_desc:"<p>Charmantes Apartment in Lumbarda mit privater Terrasse, Meerblick und Zugang zum Gemeinschaftspool. Ideal f\u00fcr einen ruhigen Aufenthalt auf der Insel Kor\u010dula.</p><p>Auf den H\u00f6hen gelegen, genie\u00dfen die Apartments eine au\u00dfergew\u00f6hnliche Lage mit freiem Blick auf den Yachthafen, die Bucht von Lumbarda und im Hintergrund den Berg Saint Ilia.</p><p>Jedes Apartment umfasst einen hellen Wohnbereich mit voll ausgestatteter moderner K\u00fcche, ein gem\u00fctliches Schlafzimmer mit Bad sowie eine private Terrasse, perfekt um gesellige Momente mit Meerblick zu genie\u00dfen.</p>",amenity_terrasse:"Private Terrasse",amenity_vue:"Meerblick",amenity_piscine:"Gemeinschaftspool",amenity_cuisine:"Ausgestattete K\u00fcche",amenity_parking:"Privater Parkplatz",amenity_wifi:"Schnelles WLAN",gallery_label:"Galerie",gallery_title:"Galerie",gallery_subtitle:"Entdecken Sie Les Terrasses in Bildern",faq_label:"Informationen",faq_title:"H\u00e4ufig gestellte Fragen",faq_subtitle:"Alles, was Sie f\u00fcr Ihren Aufenthalt wissen m\u00fcssen",faq_q1:"Wie buche ich ein Apartment?",faq_a1:"Sie k\u00f6nnen direkt \u00fcber unser Kontaktformular oder auf Booking.com und Airbnb buchen. Wir empfehlen eine fr\u00fchzeitige Buchung, besonders f\u00fcr die Hochsaison (Juni bis September).",faq_q2:"Welche Ausstattung ist enthalten?",faq_a2:"Jedes Apartment umfasst: private Terrasse mit Meerblick, voll ausgestattete K\u00fcche, modernes Bad, schnelles WLAN, Klimaanlage, Bettw\u00e4sche und Handt\u00fccher. Zugang zum Gemeinschaftspool und privatem Parkplatz inklusive.",faq_q3:"Was kostet eine Nacht?",faq_a3:"Die Preise variieren je nach Saison. Nebensaison ab 90\u20ac/Nacht, Zwischensaison ab 120\u20ac/Nacht, Hochsaison ab 150\u20ac/Nacht. Kontaktieren Sie uns f\u00fcr ein individuelles Angebot.",faq_q4:"Wie komme ich nach Lumbarda?",faq_a4:"Lumbarda liegt auf der Insel Kor\u010dula in Kroatien. Sie erreichen es per F\u00e4hre von Split, Dubrovnik oder Orebi\u0107. Der n\u00e4chste Flughafen ist Dubrovnik (2h) oder Split (3h mit F\u00e4hre). Wir k\u00f6nnen einen Transfer vom Hafen Kor\u010dula organisieren.",faq_q5:"Gibt es einen Parkplatz?",faq_a5:"Ja, jedes Apartment verf\u00fcgt \u00fcber einen kostenlosen privaten Parkplatz. Wenn Sie ein Auto ben\u00f6tigen, helfen wir gerne bei der Organisation einer Fahrzeugmiete vor Ort.",contact_label:"Kontakt",contact_title:"Kontaktieren Sie uns",contact_subtitle:"Haben Sie eine Frage? Schreiben Sie uns",form_name:"Vollst\u00e4ndiger Name",form_email:"E-Mail",form_dates:"Gew\u00fcnschte Daten",form_apt:"Apartment",form_apt_placeholder:"Apartment w\u00e4hlen",form_message:"Nachricht",form_submit:"Nachricht senden",contact_info_title:"Informationen",contact_checkin:"Check-in: 15:00 - 20:00<br>Check-out: vor 10:00",footer_desc:"Charmante Apartments mit privater Terrasse, Meerblick und Gemeinschaftspool in Lumbarda, Insel Kor\u010dula.",footer_links_title:"Schnelllinks",footer_follow:"Folgen Sie uns",footer_rights:"Alle Rechte vorbehalten."}
+fr:{nav_about:"Pourquoi nous",nav_apartments:"Appartements",nav_gallery:"Galerie",nav_faq:"FAQ",nav_contact:"Contact",nav_cta:"R\u00e9server",nav_tagline:"Exquisite Stays",hero_title:"Les Terrasses de Lumbarda",hero_location:"Lumbarda, \u00cele de Kor\u010dula \u2014 Croatie",hero_desc:"Appartements de charme avec terrasse privative, vue mer et piscine commune",hero_cta1:"D\u00e9couvrir nos appartements",hero_cta2:"R\u00e9server maintenant",intro_quote:"Un havre de paix m\u00e9diterran\u00e9en, o\u00f9 chaque d\u00e9tail invite \u00e0 la contemplation.",intro_text:"Situ\u00e9s \u00e0 Lumbarda, l\u2019un des villages les plus pris\u00e9s et authentiques de l\u2019\u00eele de Kor\u010dula, les appartements Les Terrasses offrent un cadre de s\u00e9jour paisible et privil\u00e9gi\u00e9, \u00e0 seulement quelques minutes des plages aux eaux turquoise et du centre du village.",stat_apartments:"Appartements",stat_vue_val:"Vue Mer",stat_vue:"Panoramique",stat_piscine_val:"Piscine",stat_piscine:"Commune",stat_each:"chacun",about_label:"L\u2019exp\u00e9rience",about_title:"Pourquoi Les Terrasses ?",about_subtitle:"Un \u00e9crin de calme et de beaut\u00e9 sur l\u2019\u00eele de Kor\u010dula",about_f1_title:"Un emplacement privil\u00e9gi\u00e9",about_f1_desc:"Sur les hauteurs de Lumbarda, vue sur la marina et la baie, \u00e0 quelques minutes des plages cristallines",about_f2_title:"Confort & art de vivre",about_f2_desc:"S\u00e9jour lumineux, cuisine \u00e9quip\u00e9e, terrasse privative, piscine commune face \u00e0 la mer",about_f3_title:"Des vacances en toute s\u00e9r\u00e9nit\u00e9",about_f3_desc:"M\u00e9nage hebdomadaire, linge fourni, entretien piscine et jardin, parking priv\u00e9 inclus",apt_label:"Collection",apt_title:"Nos Appartements",apt_subtitle:"Quatre appartements de charme, chacun avec terrasse privative et vue mer",price_badge:"\u00c0 partir de 120\u20ac/nuit",spec_ch:"ch",spec_sdb:"sdb",spec_chambre:"chambre",spec_sdb_full:"salle de bain",btn_reserve:"R\u00e9server",btn_discover:"D\u00e9couvrir",btn_book_apt:"R\u00e9server cet appartement",apt_desc_full:"<p>Appartement de charme \u00e0 Lumbarda avec terrasse privative, vue mer et acc\u00e8s \u00e0 une piscine commune. Id\u00e9al pour un s\u00e9jour au calme sur l\u2019\u00eele de Kor\u010dula.</p><p>Situ\u00e9s \u00e0 Lumbarda, l\u2019un des villages les plus pris\u00e9s et authentiques de l\u2019\u00eele de Kor\u010dula, les appartements Les Terrasses offrent un cadre de s\u00e9jour paisible et privil\u00e9gi\u00e9, \u00e0 seulement quelques minutes des plages aux eaux turquoise et du centre du village.</p><p>Nich\u00e9s sur les hauteurs, les appartements b\u00e9n\u00e9ficient d\u2019une situation exceptionnelle avec une vue d\u00e9gag\u00e9e sur la marina, la baie de Lumbarda et, en arri\u00e8re-plan, la montagne Saint Ilia.</p><p>Chaque appartement comprend un s\u00e9jour lumineux avec cuisine moderne enti\u00e8rement \u00e9quip\u00e9e, une chambre confortable avec salle de bain, ainsi qu\u2019une terrasse privative. Une place de parking privative est \u00e9galement incluse.</p>",amenity_terrasse:"Terrasse privative",amenity_vue:"Vue mer",amenity_piscine:"Piscine commune",amenity_cuisine:"Cuisine \u00e9quip\u00e9e",amenity_parking:"Parking priv\u00e9",amenity_wifi:"Wifi haut d\u00e9bit",gallery_label:"Galerie",gallery_title:"Galerie",gallery_subtitle:"D\u00e9couvrez Les Terrasses en images",faq_label:"Informations",faq_title:"Questions fr\u00e9quentes",faq_subtitle:"Tout ce que vous devez savoir pour votre s\u00e9jour",faq_q1:"Comment r\u00e9server un appartement ?",faq_a1:"Vous pouvez r\u00e9server directement via notre formulaire de contact ci-dessous ou sur les plateformes Booking.com et Airbnb. Nous vous recommandons de r\u00e9server \u00e0 l\u2019avance, surtout pour la haute saison (juin \u00e0 septembre).",faq_q2:"Quels sont les \u00e9quipements inclus ?",faq_a2:"Chaque appartement comprend : terrasse privative avec vue mer, cuisine enti\u00e8rement \u00e9quip\u00e9e, salle de bain moderne, wifi haut d\u00e9bit, climatisation, linge de maison et serviettes. Vous avez \u00e9galement acc\u00e8s \u00e0 la piscine commune et \u00e0 un parking priv\u00e9.",faq_q3:"Quel est le prix par nuit ?",faq_a3:"Les tarifs varient selon la saison. En basse saison \u00e0 partir de 90\u20ac/nuit, en moyenne saison \u00e0 partir de 120\u20ac/nuit, et en haute saison \u00e0 partir de 150\u20ac/nuit. Contactez-nous pour un devis personnalis\u00e9 selon vos dates.",faq_q4:"Comment se rendre \u00e0 Lumbarda ?",faq_a4:"Lumbarda se trouve sur l\u2019\u00eele de Kor\u010dula en Croatie. Vous pouvez y acc\u00e9der par ferry depuis Split, Dubrovnik ou Orebi\u0107. L\u2019a\u00e9roport le plus proche est celui de Dubrovnik (2h) ou Split (3h avec ferry). Nous pouvons organiser un transfert depuis le port de Kor\u010dula.",faq_q5:"Y a-t-il un parking ?",faq_a5:"Oui, chaque appartement dispose d\u2019une place de parking priv\u00e9e gratuite. Si vous avez besoin d\u2019une voiture, nous pouvons \u00e9galement vous aider \u00e0 organiser une location de v\u00e9hicule sur place.",contact_label:"Contact",contact_title:"Contactez-nous",contact_subtitle:"Une question ? Envoyez-nous un message",form_name:"Nom complet",form_email:"Email",form_dates:"Dates souhait\u00e9es",form_apt:"Appartement",form_apt_placeholder:"Choisir un appartement",form_message:"Message",form_submit:"Envoyer le message",contact_info_title:"Informations",contact_checkin:"Check-in : 15h00 - 20h00<br>Check-out : avant 10h00",footer_desc:"Appartements de charme avec terrasse privative, vue mer et piscine commune \u00e0 Lumbarda, \u00eele de Kor\u010dula.",footer_links_title:"Liens rapides",footer_follow:"Suivez-nous",footer_rights:"Tous droits r\u00e9serv\u00e9s."},
+en:{nav_about:"Why us",nav_apartments:"Apartments",nav_gallery:"Gallery",nav_faq:"FAQ",nav_contact:"Contact",nav_cta:"Book now",nav_tagline:"Exquisite Stays",hero_title:"Les Terrasses de Lumbarda",hero_location:"Lumbarda, Island of Kor\u010dula \u2014 Croatia",hero_desc:"Charming apartments with private terrace, sea view and shared pool",hero_cta1:"Discover our apartments",hero_cta2:"Book now",intro_quote:"A Mediterranean haven of peace, where every detail invites contemplation.",intro_text:"Located in Lumbarda, one of the most sought-after and authentic villages on the island of Kor\u010dula, Les Terrasses apartments offer a peaceful and privileged setting, just minutes from turquoise beaches and the village center.",stat_apartments:"Apartments",stat_vue_val:"Sea View",stat_vue:"Panoramic",stat_piscine_val:"Pool",stat_piscine:"Shared",stat_each:"each",about_label:"The experience",about_title:"Why Les Terrasses?",about_subtitle:"A haven of peace and beauty on the island of Kor\u010dula",about_f1_title:"A prime location",about_f1_desc:"On the heights of Lumbarda, overlooking the marina and bay, just minutes from crystal-clear beaches",about_f2_title:"Comfort & lifestyle",about_f2_desc:"Bright living area, equipped kitchen, private terrace, shared pool facing the sea",about_f3_title:"Stress-free holidays",about_f3_desc:"Weekly cleaning, linen provided, pool and garden maintenance, private parking included",apt_label:"Collection",apt_title:"Our Apartments",apt_subtitle:"Four charming apartments, each with private terrace and sea view",price_badge:"From \u20ac120/night",spec_ch:"bed",spec_sdb:"bath",spec_chambre:"bedroom",spec_sdb_full:"bathroom",btn_reserve:"Book",btn_discover:"Discover",btn_book_apt:"Book this apartment",apt_desc_full:"<p>Charming apartment in Lumbarda with private terrace, sea view and access to a shared pool. Perfect for a peaceful stay on the island of Kor\u010dula.</p><p>Located in Lumbarda, one of the most sought-after and authentic villages on the island of Kor\u010dula, Les Terrasses apartments offer a peaceful and privileged setting, just minutes from turquoise beaches and the village center.</p><p>Perched on the heights, the apartments enjoy an exceptional location with open views of the marina, Lumbarda bay and, in the background, Mount Saint Ilia.</p><p>Each apartment includes a bright living room with a fully equipped modern kitchen, a comfortable bedroom with bathroom, and a private terrace. A private parking space is also included.</p>",amenity_terrasse:"Private terrace",amenity_vue:"Sea view",amenity_piscine:"Shared pool",amenity_cuisine:"Equipped kitchen",amenity_parking:"Private parking",amenity_wifi:"High-speed Wifi",gallery_label:"Gallery",gallery_title:"Gallery",gallery_subtitle:"Discover Les Terrasses in pictures",faq_label:"Information",faq_title:"Frequently Asked Questions",faq_subtitle:"Everything you need to know for your stay",faq_q1:"How do I book an apartment?",faq_a1:"You can book directly via our contact form below or on Booking.com and Airbnb. We recommend booking in advance, especially for high season (June to September).",faq_q2:"What amenities are included?",faq_a2:"Each apartment includes: private terrace with sea view, fully equipped kitchen, modern bathroom, high-speed wifi, air conditioning, household linen and towels. You also have access to the shared pool and private parking.",faq_q3:"What is the price per night?",faq_a3:"Rates vary by season. Low season from \u20ac90/night, mid-season from \u20ac120/night, and high season from \u20ac150/night. Contact us for a personalized quote for your dates.",faq_q4:"How do I get to Lumbarda?",faq_a4:"Lumbarda is on the island of Kor\u010dula in Croatia. You can get there by ferry from Split, Dubrovnik or Orebi\u0107. The nearest airport is Dubrovnik (2h) or Split (3h with ferry). We can arrange a transfer from the port of Kor\u010dula.",faq_q5:"Is there parking?",faq_a5:"Yes, each apartment has a free private parking space. If you need a car, we can also help arrange a vehicle rental on site.",contact_label:"Contact",contact_title:"Contact us",contact_subtitle:"Have a question? Send us a message",form_name:"Full name",form_email:"Email",form_dates:"Desired dates",form_apt:"Apartment",form_apt_placeholder:"Choose an apartment",form_message:"Message",form_submit:"Send message",contact_info_title:"Information",contact_checkin:"Check-in: 3:00 PM - 8:00 PM<br>Check-out: before 10:00 AM",footer_desc:"Charming apartments with private terrace, sea view and shared pool in Lumbarda, island of Kor\u010dula.",footer_links_title:"Quick links",footer_follow:"Follow us",footer_rights:"All rights reserved."},
+hr:{nav_about:"Za\u0161to mi",nav_apartments:"Apartmani",nav_gallery:"Galerija",nav_faq:"FAQ",nav_contact:"Kontakt",nav_cta:"Rezerviraj",nav_tagline:"Exquisite Stays",hero_title:"Les Terrasses de Lumbarda",hero_location:"Lumbarda, Otok Kor\u010dula \u2014 Hrvatska",hero_desc:"\u0160armantni apartmani s privatnom terasom, pogledom na more i zajedni\u010dkim bazenom",hero_cta1:"Otkrijte na\u0161e apartmane",hero_cta2:"Rezervirajte sada",intro_quote:"Mediteranski raj mira, gdje svaki detalj poziva na kontemplaciju.",intro_text:"Smje\u0161teni u Lumbardi, jednom od najtra\u017eenijih i najautenti\u010dnijih sela na otoku Kor\u010duli, apartmani Les Terrasses nude miran i privilegiran ambijent, samo nekoliko minuta od pla\u017ea s tirkiznom vodom i centra sela.",stat_apartments:"Apartmani",stat_vue_val:"Pogled",stat_vue:"Na more",stat_piscine_val:"Bazen",stat_piscine:"Zajedni\u010dki",stat_each:"svaki",about_label:"Iskustvo",about_title:"Za\u0161to Les Terrasses?",about_subtitle:"Oaza mira i ljepote na otoku Kor\u010duli",about_f1_title:"Privilegirani polo\u017eaj",about_f1_desc:"Na uzvisini Lumbarde, s pogledom na marinu i zaljev, samo nekoliko minuta od kristalno \u010distih pla\u017ea",about_f2_title:"Udobnost i stil \u017eivota",about_f2_desc:"Svijetli dnevni boravak, opremljena kuhinja, privatna terasa, zajedni\u010dki bazen s pogledom na more",about_f3_title:"Odmor bez briga",about_f3_desc:"Tjedno \u010di\u0161\u0107enje, posteljina uklju\u010dena, odr\u017eavanje bazena i vrta, privatni parking uklju\u010den",apt_label:"Kolekcija",apt_title:"Na\u0161i apartmani",apt_subtitle:"\u010cetiri \u0161armantna apartmana, svaki s privatnom terasom i pogledom na more",price_badge:"Od 120\u20ac/no\u0107",spec_ch:"spav",spec_sdb:"kup",spec_chambre:"spava\u0107a soba",spec_sdb_full:"kupaonica",btn_reserve:"Rezerviraj",btn_discover:"Otkrijte",btn_book_apt:"Rezervirajte ovaj apartman",apt_desc_full:"<p>\u0160armantan apartman u Lumbardi s privatnom terasom, pogledom na more i pristupom zajedni\u010dkom bazenu. Idealan za miran boravak na otoku Kor\u010duli.</p><p>Smje\u0161teni u Lumbardi, jednom od najtra\u017eenijih i najautenti\u010dnijih sela na otoku Kor\u010duli, apartmani Les Terrasses nude miran i privilegiran ambijent, samo nekoliko minuta od pla\u017ea s tirkiznom vodom i centra sela.</p><p>Smje\u0161teni na uzvisini, apartmani u\u017eivaju izniman polo\u017eaj s otvorenim pogledom na marinu, zaljev Lumbarde i, u pozadini, planinu Sveti Ilija.</p><p>Svaki apartman uklju\u010duje svijetli dnevni boravak s potpuno opremljenom modernom kuhinjom, udobnu spava\u0107u sobu s kupaonicom te privatnu terasu. Privatno parkirno mjesto tako\u0111er je uklju\u010deno.</p>",amenity_terrasse:"Privatna terasa",amenity_vue:"Pogled na more",amenity_piscine:"Zajedni\u010dki bazen",amenity_cuisine:"Opremljena kuhinja",amenity_parking:"Privatni parking",amenity_wifi:"Brzi Wifi",gallery_label:"Galerija",gallery_title:"Galerija",gallery_subtitle:"Otkrijte Les Terrasses u slikama",faq_label:"Informacije",faq_title:"\u010cesta pitanja",faq_subtitle:"Sve \u0161to trebate znati za svoj boravak",faq_q1:"Kako rezervirati apartman?",faq_a1:"Mo\u017eete rezervirati izravno putem na\u0161eg kontakt obrasca ili na platformama Booking.com i Airbnb. Preporu\u010damo rezervaciju unaprijed, osobito za visoku sezonu (lipanj do rujan).",faq_q2:"Koji su sadr\u017eaji uklju\u010deni?",faq_a2:"Svaki apartman uklju\u010duje: privatnu terasu s pogledom na more, potpuno opremljenu kuhinju, modernu kupaonicu, brzi wifi, klimu, posteljinu i ru\u010dnike. Tako\u0111er imate pristup zajedni\u010dkom bazenu i privatnom parkingu.",faq_q3:"Koja je cijena po no\u0107enju?",faq_a3:"Cijene variraju prema sezoni. U niskoj sezoni od 90\u20ac/no\u0107, u srednjoj sezoni od 120\u20ac/no\u0107, a u visokoj sezoni od 150\u20ac/no\u0107. Kontaktirajte nas za personaliziranu ponudu prema va\u0161im datumima.",faq_q4:"Kako do\u0107i do Lumbarde?",faq_a4:"Lumbarda se nalazi na otoku Kor\u010duli u Hrvatskoj. Mo\u017eete do\u0107i trajektom iz Splita, Dubrovnika ili Orebi\u0107a. Najbli\u017ea zra\u010dna luka je Dubrovnik (2h) ili Split (3h s trajektom). Mo\u017eemo organizirati transfer iz luke Kor\u010dula.",faq_q5:"Ima li parking?",faq_a5:"Da, svaki apartman ima besplatno privatno parkirno mjesto. Ako trebate automobil, mo\u017eemo vam tako\u0111er pomo\u0107i organizirati najam vozila na licu mjesta.",contact_label:"Kontakt",contact_title:"Kontaktirajte nas",contact_subtitle:"Imate pitanje? Po\u0161aljite nam poruku",form_name:"Puno ime",form_email:"Email",form_dates:"\u017deljeni datumi",form_apt:"Apartman",form_apt_placeholder:"Odaberite apartman",form_message:"Poruka",form_submit:"Po\u0161alji poruku",contact_info_title:"Informacije",contact_checkin:"Prijava: 15:00 - 20:00<br>Odjava: prije 10:00",footer_desc:"\u0160armantni apartmani s privatnom terasom, pogledom na more i zajedni\u010dkim bazenom u Lumbardi, otok Kor\u010dula.",footer_links_title:"Brzi linkovi",footer_follow:"Pratite nas",footer_rights:"Sva prava pridr\u017eana."},
+de:{nav_about:"Warum wir",nav_apartments:"Apartments",nav_gallery:"Galerie",nav_faq:"FAQ",nav_contact:"Kontakt",nav_cta:"Buchen",nav_tagline:"Exquisite Stays",hero_title:"Les Terrasses de Lumbarda",hero_location:"Lumbarda, Insel Kor\u010dula \u2014 Kroatien",hero_desc:"Charmante Apartments mit privater Terrasse, Meerblick und Gemeinschaftspool",hero_cta1:"Unsere Apartments entdecken",hero_cta2:"Jetzt buchen",intro_quote:"Eine mediterrane Oase des Friedens, in der jedes Detail zur Kontemplation einl\u00e4dt.",intro_text:"Die Apartments Les Terrasses befinden sich in Lumbarda, einem der beliebtesten und authentischsten D\u00f6rfer der Insel Kor\u010dula, und bieten eine ruhige und privilegierte Umgebung, nur wenige Minuten von t\u00fcrkisfarbenen Str\u00e4nden und dem Dorfzentrum entfernt.",stat_apartments:"Apartments",stat_vue_val:"Meerblick",stat_vue:"Panorama",stat_piscine_val:"Pool",stat_piscine:"Gemeinschafts",stat_each:"jeweils",about_label:"Das Erlebnis",about_title:"Warum Les Terrasses?",about_subtitle:"Eine Oase der Ruhe und Sch\u00f6nheit auf der Insel Kor\u010dula",about_f1_title:"Erstklassige Lage",about_f1_desc:"Auf den H\u00f6hen von Lumbarda, mit Blick auf den Yachthafen und die Bucht, nur wenige Minuten von kristallklaren Str\u00e4nden entfernt",about_f2_title:"Komfort & Lebensart",about_f2_desc:"Heller Wohnbereich, ausgestattete K\u00fcche, private Terrasse, Gemeinschaftspool mit Meerblick",about_f3_title:"Sorgenfreier Urlaub",about_f3_desc:"W\u00f6chentliche Reinigung, W\u00e4sche inklusive, Pool- und Gartenpflege, privater Parkplatz inklusive",apt_label:"Kollektion",apt_title:"Unsere Apartments",apt_subtitle:"Vier charmante Apartments, jedes mit privater Terrasse und Meerblick",price_badge:"Ab 120\u20ac/Nacht",spec_ch:"Schlafz",spec_sdb:"Bad",spec_chambre:"Schlafzimmer",spec_sdb_full:"Badezimmer",btn_reserve:"Buchen",btn_discover:"Entdecken",btn_book_apt:"Dieses Apartment buchen",apt_desc_full:"<p>Charmantes Apartment in Lumbarda mit privater Terrasse, Meerblick und Zugang zum Gemeinschaftspool. Ideal f\u00fcr einen ruhigen Aufenthalt auf der Insel Kor\u010dula.</p><p>Die Apartments Les Terrasses befinden sich in Lumbarda, einem der beliebtesten und authentischsten D\u00f6rfer der Insel Kor\u010dula, und bieten eine ruhige und privilegierte Umgebung, nur wenige Minuten von t\u00fcrkisfarbenen Str\u00e4nden und dem Dorfzentrum entfernt.</p><p>Auf den H\u00f6hen gelegen, genie\u00dfen die Apartments eine au\u00dfergew\u00f6hnliche Lage mit freiem Blick auf den Yachthafen, die Bucht von Lumbarda und im Hintergrund den Berg Saint Ilia.</p><p>Jedes Apartment umfasst einen hellen Wohnbereich mit voll ausgestatteter moderner K\u00fcche, ein gem\u00fctliches Schlafzimmer mit Bad sowie eine private Terrasse. Ein privater Parkplatz ist ebenfalls inbegriffen.</p>",amenity_terrasse:"Private Terrasse",amenity_vue:"Meerblick",amenity_piscine:"Gemeinschaftspool",amenity_cuisine:"Ausgestattete K\u00fcche",amenity_parking:"Privater Parkplatz",amenity_wifi:"Schnelles WLAN",gallery_label:"Galerie",gallery_title:"Galerie",gallery_subtitle:"Entdecken Sie Les Terrasses in Bildern",faq_label:"Informationen",faq_title:"H\u00e4ufig gestellte Fragen",faq_subtitle:"Alles, was Sie f\u00fcr Ihren Aufenthalt wissen m\u00fcssen",faq_q1:"Wie buche ich ein Apartment?",faq_a1:"Sie k\u00f6nnen direkt \u00fcber unser Kontaktformular oder auf Booking.com und Airbnb buchen. Wir empfehlen eine fr\u00fchzeitige Buchung, besonders f\u00fcr die Hochsaison (Juni bis September).",faq_q2:"Welche Ausstattung ist enthalten?",faq_a2:"Jedes Apartment umfasst: private Terrasse mit Meerblick, voll ausgestattete K\u00fcche, modernes Bad, schnelles WLAN, Klimaanlage, Bettw\u00e4sche und Handt\u00fccher. Zugang zum Gemeinschaftspool und privatem Parkplatz inklusive.",faq_q3:"Was kostet eine Nacht?",faq_a3:"Die Preise variieren je nach Saison. Nebensaison ab 90\u20ac/Nacht, Zwischensaison ab 120\u20ac/Nacht, Hochsaison ab 150\u20ac/Nacht. Kontaktieren Sie uns f\u00fcr ein individuelles Angebot.",faq_q4:"Wie komme ich nach Lumbarda?",faq_a4:"Lumbarda liegt auf der Insel Kor\u010dula in Kroatien. Sie erreichen es per F\u00e4hre von Split, Dubrovnik oder Orebi\u0107. Der n\u00e4chste Flughafen ist Dubrovnik (2h) oder Split (3h mit F\u00e4hre). Wir k\u00f6nnen einen Transfer vom Hafen Kor\u010dula organisieren.",faq_q5:"Gibt es einen Parkplatz?",faq_a5:"Ja, jedes Apartment verf\u00fcgt \u00fcber einen kostenlosen privaten Parkplatz. Wenn Sie ein Auto ben\u00f6tigen, helfen wir gerne bei der Organisation einer Fahrzeugmiete vor Ort.",contact_label:"Kontakt",contact_title:"Kontaktieren Sie uns",contact_subtitle:"Haben Sie eine Frage? Schreiben Sie uns",form_name:"Vollst\u00e4ndiger Name",form_email:"E-Mail",form_dates:"Gew\u00fcnschte Daten",form_apt:"Apartment",form_apt_placeholder:"Apartment w\u00e4hlen",form_message:"Nachricht",form_submit:"Nachricht senden",contact_info_title:"Informationen",contact_checkin:"Check-in: 15:00 - 20:00<br>Check-out: vor 10:00",footer_desc:"Charmante Apartments mit privater Terrasse, Meerblick und Gemeinschaftspool in Lumbarda, Insel Kor\u010dula.",footer_links_title:"Schnelllinks",footer_follow:"Folgen Sie uns",footer_rights:"Alle Rechte vorbehalten."}
 };
 
 var currentLang='fr';
-var htmlKeys=['apt_desc','contact_checkin','faq_a1','faq_a2','faq_a3','faq_a4','faq_a5'];
+var htmlKeys=['apt_desc_full','contact_checkin','faq_a1','faq_a2','faq_a3','faq_a4','faq_a5'];
 
 function setLanguage(lang){
   currentLang=lang;
@@ -1174,7 +1251,7 @@ function toggleFaq(el){
 }
 
 /* =========================================================
-   REVEAL ANIMATIONS (IntersectionObserver)
+   REVEAL ANIMATIONS (IntersectionObserver + fallback)
    ========================================================= */
 (function(){
   var reveals=document.querySelectorAll('.reveal');
@@ -1185,17 +1262,17 @@ function toggleFaq(el){
     entries.forEach(function(entry){
       if(entry.isIntersecting){entry.target.classList.add('visible');observer.unobserve(entry.target)}
     });
-  },{threshold:0.03,rootMargin:'-50px 0px -50px 0px'});
+  },{threshold:0.01,rootMargin:'0px 0px -30px 0px'});
   reveals.forEach(function(el){observer.observe(el)});
 
-  /* Fallback: make everything visible after 3s to avoid stuck elements */
+  /* Fallback: make ALL elements visible after 2s to avoid stuck invisible content */
   setTimeout(function(){
     reveals.forEach(function(el){
       if(!el.classList.contains('visible')){
         el.classList.add('visible');
       }
     });
-  },3000);
+  },2000);
 
   /* Scroll-based fallback for elements near viewport */
   window.addEventListener('scroll',function(){
@@ -1209,12 +1286,42 @@ function toggleFaq(el){
 })();
 
 /* =========================================================
+   ANIMATED COUNTERS
+   ========================================================= */
+(function(){
+  var counters=document.querySelectorAll('[data-count]');
+  var animated=new Set();
+  function animateCounter(el){
+    if(animated.has(el))return;
+    animated.add(el);
+    var target=parseInt(el.getAttribute('data-count'),10);
+    var current=0;
+    var step=Math.max(1,Math.floor(target/40));
+    var interval=setInterval(function(){
+      current+=step;
+      if(current>=target){current=target;clearInterval(interval)}
+      el.textContent=current;
+    },30);
+  }
+  if('IntersectionObserver' in window){
+    var obs=new IntersectionObserver(function(entries){
+      entries.forEach(function(e){
+        if(e.isIntersecting)animateCounter(e.target);
+      });
+    },{threshold:0.3});
+    counters.forEach(function(c){obs.observe(c)});
+  } else {
+    counters.forEach(animateCounter);
+  }
+})();
+
+/* =========================================================
    SMOOTH SCROLL
    ========================================================= */
 document.querySelectorAll('a[href^="#"]').forEach(function(a){
   a.addEventListener('click',function(e){
     var href=a.getAttribute('href');
-    if(href==='#'||href==='#booking')return;
+    if(href==='#')return;
     var target=document.querySelector(href);
     if(target){
       e.preventDefault();
@@ -1226,11 +1333,22 @@ document.querySelectorAll('a[href^="#"]').forEach(function(a){
 });
 
 /* =========================================================
-   HERO PARALLAX (subtle)
+   HERO VIDEO FALLBACK + PARALLAX
    ========================================================= */
 (function(){
-  var heroVideo=document.querySelector('.hero-bg video');
+  var heroVideo=document.getElementById('heroVideo');
   if(!heroVideo)return;
+
+  /* Fallback: if primary video fails, try alternative */
+  heroVideo.addEventListener('error',function(){
+    var altSrc='https://cdn.pixabay.com/video/2024/03/15/204420-923590044_large.mp4';
+    if(heroVideo.querySelector('source').src!==altSrc){
+      heroVideo.querySelector('source').src=altSrc;
+      heroVideo.load();
+    }
+  },true);
+
+  /* Subtle parallax on hero video */
   window.addEventListener('scroll',function(){
     var scrolled=window.scrollY;
     if(scrolled<window.innerHeight){
